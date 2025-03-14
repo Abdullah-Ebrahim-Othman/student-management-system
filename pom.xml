@@ -27,9 +27,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/your-org/your-repo.git</connection>
-        <developerConnection>scm:git:ssh://github.com/your-org/your-repo.git</developerConnection>
-        <url>https://github.com/your-org/your-repo</url>
+        <connection>scm:git://github.com/Abdullah-Ebrahim-Othman/student-management-system.git</connection>
+        <developerConnection>scm:git:ssh://github.com/example/student-management-system.git</developerConnection>
+        <url>https://github.com/example/student-management-system</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -38,7 +38,6 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -55,15 +54,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
-        <!-- Database -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- Development Tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -76,15 +71,11 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <!-- MapStruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -102,15 +93,11 @@
             <version>0.2.0</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- OpenAPI (Swagger) -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.3.0</version>
         </dependency>
-
-        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
