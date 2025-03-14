@@ -1,17 +1,21 @@
-# Student Management System 🚀
-A **Spring Boot CRUD API** for managing students, integrated with **PostgreSQL & MongoDB**, following **best practices**.
+# **Student Management System 🚀**  
+A Spring Boot CRUD API for managing students, integrated with **PostgreSQL & MongoDB**, following best practices.
 
-📌 Features
-- ✅ RESTful CRUD operations for student management
-- ✅ PostgreSQL as the primary database
-- ✅ MongoDB for data backup and synchronization
-- ✅ Pagination & criteria-based search
-- ✅ MapStruct for object mapping (DTOs)
-- ✅ Swagger API documentation
-- ✅ Docker Compose for easy setup
+---
 
-🏗️ Folder Structure
+## 📌 **Features**  
+✅ RESTful **CRUD** operations for student management  
+✅ **PostgreSQL** as the primary database  
+✅ **MongoDB** for data backup and synchronization  
+✅ **Pagination & criteria-based search**  
+✅ **MapStruct** for object mapping (DTOs)  
+✅ **Swagger API documentation**  
+✅ **Docker Compose** for easy setup  
 
+---
+
+## 🏗 **Folder Structure**  
+```bash
 student-management-system/
 │── src/
 │   ├── main/
@@ -19,7 +23,7 @@ student-management-system/
 │   │   │   ├── controller/      # Controllers (API Endpoints)
 │   │   │   ├── service/         # Business Logic (BOs, DTOs)
 │   │   │   ├── repository/      # Repositories (PostgreSQL, MongoDB)
-│   │   │   ├── model/           # Entities, DTOs, BOs
+│   │   │   ├── model/           # Entities, DTOs
 │   │   │   ├── config/          # Configuration (Swagger, Security)
 │   │   │   ├── exception/       # Global Exception Handling
 │   │   │   ├── mapper/          # MapStruct Mappers
@@ -34,4 +38,3 @@ student-management-system/
 │── pom.xml                        # Maven Dependencies
 │── README.md                      # Documentation
 │── docker-compose.yml              # Docker Setup (PostgreSQL, MongoDB, Spring Boot)
-
