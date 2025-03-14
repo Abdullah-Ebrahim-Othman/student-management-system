@@ -11,12 +11,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())  // ✅ Proper way to disable CSRF in Spring Security 6.1+
+
+                http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()  // ✅ Allow all requests (no authentication)
+                        .anyRequest().permitAll()
                 )
-                .httpBasic(basic -> basic.disable()); // ✅ Disable Basic Auth
+                .httpBasic(basic -> basic.disable());
 
         return http.build();
     }
