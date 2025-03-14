@@ -11,6 +11,7 @@ A **Spring Boot CRUD API** for managing students, integrated with **PostgreSQL &
 - ✅ Docker Compose for easy setup
 
 🏗️ Folder Structure
+
 student-management-system/
 │── src/
 │   ├── main/
