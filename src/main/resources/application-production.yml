@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://prod-db-host:5432/school
+    username: prod_user
+    password: prod_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  data:
+    mongodb:
+      uri: mongodb://prod-mongo-host:27017/school
+
+server:
+  port: 8082
+
+logging:
+  level:
+    root: WARN

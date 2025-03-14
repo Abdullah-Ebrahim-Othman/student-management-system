@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: student-crud-service
+
+  profiles:
+    active: default
+
+  security:
+    user:
+      name: ${APP_USERNAME}
+      password: ${APP_PASSWORD}
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+
