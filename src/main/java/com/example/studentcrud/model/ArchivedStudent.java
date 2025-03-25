@@ -1,8 +1,6 @@
 package com.example.studentcrud.model;
 
-import com.example.studentcrud.audit.Auditable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
