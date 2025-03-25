@@ -8,9 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Document(collection = "archived_students")
-public class ArchivedStudent extends Auditable {
+public class ArchivedStudent  {
     private int id;
     private String name;
     private Level level;
