@@ -1,6 +1,5 @@
 package com.example.studentcrud.controller;
 
-import com.example.studentcrud.api.BaseApiController;
 import com.example.studentcrud.dto.StudentDTO;
 import com.example.studentcrud.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,9 @@ import org.springframework.data.domain.Pageable;
 
 
 @RestController
+@RequestMapping("${api.base-path}/${api.version}/students")
 @Tag(name = "Student API", description = "Endpoints for managing students")
-public class StudentController implements BaseApiController {
+public class StudentController {
 
     @Autowired
     private StudentService studentService;

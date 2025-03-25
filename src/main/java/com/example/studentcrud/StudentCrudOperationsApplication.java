@@ -2,7 +2,11 @@ package com.example.studentcrud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+@EnableJpaRepositories(basePackages = "com.example.studentcrud.repository.postgres")
+@EnableMongoRepositories(basePackages = "com.example.studentcrud.repository.mongo")
 @SpringBootApplication
 public class StudentCrudOperationsApplication {
 

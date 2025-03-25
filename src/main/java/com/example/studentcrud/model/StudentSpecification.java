@@ -10,7 +10,7 @@ public class StudentSpecification {
                 name == null ? null : criteriaBuilder.like(root.get("name"), "%" + name + "%");
     }
 
-    public static Specification<Student> hasLevel(String level) {
+    public static Specification<Student> hasLevel(Level level) {
         return (root, query, criteriaBuilder) ->
                 level == null ? null : criteriaBuilder.equal(root.get("level"), level);
     }

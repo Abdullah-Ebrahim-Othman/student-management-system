@@ -3,12 +3,28 @@ spring:
     name: student-crud-service
 
   profiles:
-    active: default
+    active: default  # Default profile
 
   security:
     user:
       name: ${APP_USERNAME}
       password: ${APP_PASSWORD}
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/school
+    username: postgres
+    password: P@ssw0rd1
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/school
 
 springdoc:
   api-docs:
@@ -18,3 +34,8 @@ springdoc:
     operations-sorter: method
     tags-sorter: alpha
 
+server:
+  port: 8080
+
+api:
+  base-path: /api

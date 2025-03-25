@@ -1,27 +1,29 @@
 package com.example.studentcrud.model;
 
-import jakarta.persistence.Id;
+import com.example.studentcrud.audit.Auditable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Document(collection = "students_archive")
 @Data
-public class ArchivedStudent {
-
-    @Id
-    private String id;
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@Document(collection = "archived_students")
+public class ArchivedStudent extends Auditable {
+    private int id;
     private String name;
-    private String level;
+    private Level level;
+    private Gender gender;
     private int age;
-    private String gender;
+    private Integer version;
 
     public ArchivedStudent(Student student) {
-        this.id = String.valueOf(student.getId());
+        this.id = student.getId();
         this.name = student.getName();
         this.level = student.getLevel();
-        this.age = student.getAge();
         this.gender = student.getGender();
+        this.age = student.getAge();
+        this.version = student.getVersion();
     }
-
 }

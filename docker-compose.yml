@@ -19,7 +19,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data:/data/db  # Persist MongoDB data
+      - mongo_data:/data/db
 
   springboot-app:
     image: my-springboot-app
@@ -27,12 +27,12 @@ services:
     build: .
     restart: always
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/school
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=P@ssw0rd1
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo_db:27017/school
-      - APP_USERNAME=admin
-      - APP_PASSWORD=1234
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/school
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: P@ssw0rd1
+      SPRING_DATA_MONGODB_URI: mongodb://mongo_db:27017/school
+      APP_USERNAME: ${APP_USERNAME:-admin}
+      APP_PASSWORD: ${APP_PASSWORD:-1234}
     ports:
       - "8080:8080"
     depends_on:
