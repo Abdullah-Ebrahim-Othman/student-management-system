@@ -3,6 +3,7 @@ package com.example.studentcrud.service;
 import com.example.studentcrud.model.ArchivedStudent;
 import com.example.studentcrud.model.Student;
 import com.example.studentcrud.repository.mongo.StudentMongoRepository;
+import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostUpdate;
 import jakarta.persistence.PreRemove;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class StudentListener {
     @Autowired
     private StudentMongoRepository mongoRepository;
 
-    @PreRemove
-    public void beforeDelete(Student student) {
+    @PostPersist
+    public void afterCreate(Student student) {
         ArchivedStudent archivedStudent = new ArchivedStudent(student);
         mongoRepository.save(archivedStudent);
     }
@@ -25,5 +26,10 @@ public class StudentListener {
         ArchivedStudent archivedStudent = new ArchivedStudent(student);
         mongoRepository.save(archivedStudent);
     }
-}
 
+    @PreRemove
+    public void beforeDelete(Student student) {
+        ArchivedStudent archivedStudent = new ArchivedStudent(student);
+        mongoRepository.save(archivedStudent);
+    }
+}
