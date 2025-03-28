@@ -3,15 +3,15 @@ spring:
     name: student-crud-service
 
   profiles:
-    active: default  # Default profile
+    active: default
 
   security:
     user:
-      name: ${APP_USERNAME}
-      password: ${APP_PASSWORD}
+      name: ${APP_USERNAME:admin}
+      password: ${APP_PASSWORD:password}
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/school
+    url: jdbc:postgresql://postgres:5432/school
     username: postgres
     password: P@ssw0rd1
     driver-class-name: org.postgresql.Driver
@@ -24,7 +24,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/school
+      uri: mongodb://mongo:27017/school
 
 springdoc:
   api-docs:

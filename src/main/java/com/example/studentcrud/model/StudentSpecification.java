@@ -1,7 +1,6 @@
 package com.example.studentcrud.model;
 
 import org.springframework.data.jpa.domain.Specification;
-import com.example.studentcrud.model.Student;
 
 public class StudentSpecification {
 
@@ -10,7 +9,7 @@ public class StudentSpecification {
                 name == null ? null : criteriaBuilder.like(root.get("name"), "%" + name + "%");
     }
 
-    public static Specification<Student> hasLevel(Level level) {
+    public static Specification<Student> hasLevel(String level) {
         return (root, query, criteriaBuilder) ->
                 level == null ? null : criteriaBuilder.equal(root.get("level"), level);
     }

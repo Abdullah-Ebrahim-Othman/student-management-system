@@ -22,25 +22,18 @@
 
         <div class="mb-3">
             <label class="form-label">Level</label>
-            <select class="form-control" th:field="*{level}">
-                <option value="" disabled>Select Level</option>
-                <option th:each="level : ${T(com.example.studentcrud.model.Level).values()}"
-                        th:value="${level}" th:text="${level}"></option>
-            </select>
+            <input type="text" class="form-control" th:field="*{level}" required>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Gender</label>
-            <select class="form-control" th:field="*{gender}">
-                <option value="" disabled>Select Gender</option>
-                <option th:each="gender : ${T(com.example.studentcrud.model.Gender).values()}"
-                        th:value="${gender}" th:text="${gender}"></option>
-            </select>
+            <input type="text" class="form-control" th:field="*{gender}" required>
         </div>
 
         <button type="submit" class="btn btn-success">Save</button>
         <a href="/students" class="btn btn-secondary">Cancel</a>
     </form>
+
 </div>
 </body>
 </html>

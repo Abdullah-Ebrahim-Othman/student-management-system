@@ -8,19 +8,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Document(collection = "archived_students")
 public class ArchivedStudent  {
-    private int id;
+    private String id;
     private String name;
-    private Level level;
-    private Gender gender;
-    private int age;
+    private String level;
+    private String gender;
+    private Integer gpa;
+    private Integer age;
     private Integer version;
 
     public ArchivedStudent(Student student) {
-        this.id = student.getId();
+        this.id = String.valueOf(student.getId());
         this.name = student.getName();
         this.level = student.getLevel();
         this.gender = student.getGender();
         this.age = student.getAge();
         this.version = student.getVersion();
+        this.age = student.getAge();
     }
 }

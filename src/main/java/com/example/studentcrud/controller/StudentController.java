@@ -22,7 +22,7 @@ public class StudentController {
     @GetMapping
     @Operation(summary = "Get all students with pagination", description = "Fetch students with pagination support.")
     public ResponseEntity<Page<StudentDTO>> getAllStudents(Pageable pageable) {
-        return ResponseEntity.ok(studentService.geAllStudents(pageable));
+        return ResponseEntity.ok(studentService.getAllStudents(pageable));
     }
 
     @GetMapping("/{id}")

@@ -1,43 +1,57 @@
+version: "3.8"
+
 services:
   postgres:
     image: postgres:latest
-    container_name: postgres_db
+    container_name: postgres_container
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: P@ssw0rd1
-      POSTGRES_DB: school
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: studentdb
     ports:
       - "5432:5432"
+    networks:
+      - student_network
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   mongodb:
     image: mongo:latest
-    container_name: mongo_db
+    container_name: mongo_container
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
     ports:
       - "27017:27017"
+    command: mongod --replSet rs0 --bind_ip_all
+    networks:
+      - student_network
     volumes:
       - mongo_data:/data/db
 
-  springboot-app:
-    image: my-springboot-app
-    container_name: springboot_app
-    build: .
+  student-management:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: student_management_app
     restart: always
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/school
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: P@ssw0rd1
-      SPRING_DATA_MONGODB_URI: mongodb://mongo_db:27017/school
-      APP_USERNAME: ${APP_USERNAME:-admin}
-      APP_PASSWORD: ${APP_PASSWORD:-1234}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/studentdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATA_MONGODB_URI: mongodb://root:rootpassword@mongo_container:27017/studentdb?authSource=admin
     ports:
       - "8080:8080"
     depends_on:
       - postgres
       - mongodb
+    networks:
+      - student_network
+
+networks:
+  student_network:
 
 volumes:
   postgres_data:

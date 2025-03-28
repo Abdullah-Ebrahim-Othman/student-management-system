@@ -1,20 +1,19 @@
 package com.example.studentcrud.dto;
 
-import com.example.studentcrud.model.Gender;
-import com.example.studentcrud.model.Level;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentDTO {
 
-    private int id;
+    private Integer id;
     private String name;
-    private Level level;
-    private int age;
-    private Gender gender;
+    private String level;
+    private Integer gpa;
+    private Integer age;
+    private String gender;
 
 }

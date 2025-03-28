@@ -1,2 +1,8 @@
 api:
   version: v1
+
+spring:
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    suffix: .html
+

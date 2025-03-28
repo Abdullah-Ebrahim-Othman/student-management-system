@@ -2,7 +2,6 @@ package com.example.studentcrud.service;
 
 import com.example.studentcrud.exception.ResourceNotFoundException;
 import com.example.studentcrud.mapper.StudentMapper;
-import com.example.studentcrud.model.ArchivedStudent;
 import com.example.studentcrud.model.Student;
 import com.example.studentcrud.dto.StudentDTO;
 import com.example.studentcrud.model.StudentSpecification;
@@ -28,11 +27,11 @@ public class StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
-    public Page<StudentDTO> geAllStudents(Pageable pageable) {
+    public Page<StudentDTO> getAllStudents(Pageable pageable) {
         return postgresRepository.findAll(pageable).map(studentMapper::map);
     }
 
-    public StudentDTO getStudent(Integer id) {
+    public StudentDTO getStudent(int id) {
 
         Student existingStudent = postgresRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + id));
