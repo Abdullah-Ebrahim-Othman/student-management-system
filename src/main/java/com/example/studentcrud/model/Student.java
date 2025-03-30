@@ -1,7 +1,7 @@
 package com.example.studentcrud.model;
 
 import com.example.studentcrud.audit.Auditable;
-import com.example.studentcrud.service.StudentListener;
+import com.example.studentcrud.service.StudentEntityListener;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +16,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners(StudentListener.class)
+@EntityListeners(StudentEntityListener.class)
 public class Student extends Auditable {
 
     @Id
@@ -25,10 +25,8 @@ public class Student extends Auditable {
     private String name;
     private String gender;
     private String level;
-    private Integer gpa;
+    private Double gpa;
     private Integer age;
     @Version
-    private Integer version;
+    private int version;
 }
-
-

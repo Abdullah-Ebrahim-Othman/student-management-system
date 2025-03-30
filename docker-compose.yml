@@ -36,6 +36,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: student_management_app
+    volumes:
+      - ./src/main/resources/templates:/app/resources/templates
     restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/studentdb

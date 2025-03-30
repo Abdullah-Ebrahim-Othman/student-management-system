@@ -17,7 +17,7 @@ public interface StudentMapper {
 
     List<StudentDTO> map(List<Student> students);
 
-    @Mapping(target = "id", ignore = true)
-    void updateStudentFromDto(StudentDTO studentDTO, @MappingTarget Student student);
+    @Mapping(target = "version", ignore = true)
+    void updateStudentFromDto(StudentDTO dto, @MappingTarget Student entity);
 
 }

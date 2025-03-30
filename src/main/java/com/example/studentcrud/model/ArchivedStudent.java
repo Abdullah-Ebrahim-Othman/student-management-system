@@ -12,7 +12,7 @@ public class ArchivedStudent  {
     private String name;
     private String level;
     private String gender;
-    private Integer gpa;
+    private Double gpa;
     private Integer age;
     private Integer version;
 
@@ -21,8 +21,8 @@ public class ArchivedStudent  {
         this.name = student.getName();
         this.level = student.getLevel();
         this.gender = student.getGender();
-        this.age = student.getAge();
         this.version = student.getVersion();
         this.age = student.getAge();
+        this.gpa = student.getGpa();
     }
 }

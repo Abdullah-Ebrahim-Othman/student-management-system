@@ -5,7 +5,6 @@ import com.example.studentcrud.mapper.StudentMapper;
 import com.example.studentcrud.model.Student;
 import com.example.studentcrud.dto.StudentDTO;
 import com.example.studentcrud.model.StudentSpecification;
-import com.example.studentcrud.repository.mongo.StudentMongoRepository;
 import com.example.studentcrud.repository.postgres.StudentPostgresRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,10 @@ public class StudentService {
     private StudentPostgresRepository postgresRepository;
 
     @Autowired
-    private StudentMongoRepository mongoRepository;
-
-    @Autowired
     private StudentMapper studentMapper;
 
     public Page<StudentDTO> getAllStudents(Pageable pageable) {
-        return postgresRepository.findAll(pageable).map(studentMapper::map);
+        return postgresRepository.findAll(pageable).map(student -> studentMapper.map(student));
     }
 
     public StudentDTO getStudent(int id) {

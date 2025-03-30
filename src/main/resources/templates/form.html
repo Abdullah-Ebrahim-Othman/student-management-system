@@ -7,7 +7,7 @@
 <body>
 <div class="container mt-4">
     <h2>Student Form</h2>
-    <form th:action="@{/students/save}" th:object="${student}" method="post">
+    <form th:action="@{/web/students/save}" th:object="${student}" method="post">
         <input type="hidden" th:field="*{id}" />
 
         <div class="mb-3">
@@ -30,8 +30,13 @@
             <input type="text" class="form-control" th:field="*{gender}" required>
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">GPA</label>
+            <input type="number" class="form-control" th:field="*{gpa}" required>
+        </div>
+
         <button type="submit" class="btn btn-success">Save</button>
-        <a href="/students" class="btn btn-secondary">Cancel</a>
+        <a href="/web/students" class="btn btn-secondary">Cancel</a>
     </form>
 
 </div>

@@ -34,24 +34,13 @@ public class BasicSecurityConfiguation {
 
         return http.build();
     }
+    
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/web/**").permitAll()
-//                        .anyRequest().authenticated()
-//                )
-//                .httpBasic(Customizer.withDefaults());
-//
-//        return http.build();
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("password")).build();
+        UserDetails student = User.builder().username("user").password(passwordEncoder().encode("password")).build();
+        return new InMemoryUserDetailsManager(admin, student);
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("password")).build();
-//        UserDetails student = User.builder().username("user").password(passwordEncoder().encode("password")).build();
-//        return new InMemoryUserDetailsManager(admin, student);
-//
-//    }
+    }
 }

@@ -8,6 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/web/students")
@@ -20,15 +23,19 @@ public class StudentThymeleafController {
     }
 
     @GetMapping
-    public String listStudents(Model model,
-                               @RequestParam(defaultValue = "0") int page,
-                               @RequestParam(defaultValue = "5") int size) {
+    public String listStudents(@RequestParam(defaultValue = "0") int page,
+                               @RequestParam(defaultValue = "10") int size,
+                               Model model) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<StudentDTO> students = studentService.getAllStudents(pageable);
+        Page<StudentDTO> studentPage = studentService.getAllStudents(pageable);
 
-        model.addAttribute("students", students.getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", students.getTotalPages());
+        model.addAttribute("students", studentPage.getContent());
+        model.addAttribute("currentPage", studentPage.getNumber());
+        model.addAttribute("totalPages", studentPage.getTotalPages());
+        model.addAttribute("size", size);
+
+        System.out.println(studentPage.getContent());
+
         return "list";
     }
 
@@ -54,12 +61,12 @@ public class StudentThymeleafController {
     public String editStudent(@PathVariable int id, Model model) {
         StudentDTO studentDTO = studentService.getStudent(id);
         model.addAttribute("student", studentDTO);
-        return "form"; // Using the same form.html for editing
+        return "form";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteStudent(@PathVariable int id) {
         studentService.deleteStudent(id);
-        return "redirect:/web/students"; // Fixed redirect path
+        return "redirect:/web/students";
     }
 }
