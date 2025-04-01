@@ -2,7 +2,6 @@ package com.example.studentcrud.controller;
 
 import com.example.studentcrud.dto.StudentDTO;
 import com.example.studentcrud.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +15,11 @@ import org.springframework.data.domain.Pageable;
 @Tag(name = "Student API", description = "Endpoints for managing students")
 public class StudentController {
 
-    @Autowired
-    private StudentService studentService;
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @GetMapping
     @Operation(summary = "Get all students with pagination", description = "Fetch students with pagination support.")
